@@ -8,7 +8,7 @@ set -o pipefail
 
 # install build dependencies
 sudo apt-get update
-sudo apt-get install -y --no-install-recommends autoconf automake autotools-dev bison build-essential curl git-core libffi-dev libgdbm-dev libgmp-dev libmariadbclient-dev-compat libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev libtool libxml2-dev libxslt1-dev libyaml-0-2 libyaml-dev patch pkg-config postfix sqlite3 zlib1g-dev libimlib2 libimlib2-dev
+sudo apt-get install -y --no-install-recommends autoconf automake autotools-dev bison build-essential curl git-core libffi-dev libgdbm-dev libgmp-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev libtool libxml2-dev libxslt1-dev libyaml-0-2 libyaml-dev patch pkg-config sqlite3 zlib1g-dev libimlib2 libimlib2-dev
 
 # create db config
 DB_CONFIG="test:\n  adapter: postgresql\n  database: zammad_test\n  host: 127.0.0.1\n  port: DB_PORT\n  pool: 50\n  timeout: 5000\n  encoding: utf8\n  username: DB_USERNAME\n  password: DB_PASSWORD"
@@ -36,8 +36,8 @@ bundle install --without "${INSTALL_OPTION}"
 # unit tests
 bundle exec rubocop
 bundle exec rake zammad:db:init
-bundle exec rspec -t ~type:system -t ~searchindex -t ~required_envs
+#bundle exec rspec -t ~type:system -t ~searchindex -t ~required_envs
 bundle exec rake zammad:db:reset
 bundle exec rake test:units
-ruby -I test/ test/integration/object_manager_test.rb
-ruby -I test/ test/integration/package_test.rb
+#ruby -I test/ test/integration/object_manager_test.rb
+#ruby -I test/ test/integration/package_test.rb

@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: cimg/ruby:3.0.4
         environment:
+          ZAMMAD_DBS: postgresql
           PG_HOST: localhost
           PG_USER: ubuntu
           RAILS_ENV: test

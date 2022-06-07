@@ -7,11 +7,11 @@ jobs:
         environment:
           ZAMMAD_DBS: postgresql
           PG_HOST: localhost
-          PG_USER: ubuntu
+          PG_USER: postgres
           RAILS_ENV: test
       - image: cimg/postgres:9.6
         environment:
-          POSTGRES_USER: ubuntu
+          POSTGRES_USER: postgres
           POSTGRES_DB: db_name
     steps:
       - checkout

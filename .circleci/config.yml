@@ -3,20 +3,18 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/ruby:3.0.4-node
+      - image: cimg/base:stable
         environment:
-          ZAMMAD_DBS: postgresql
-          PG_HOST: localhost
-          PG_USER: postgres
-          RAILS_ENV: test
-      - image: cimg/postgres:9.6
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: db_name
+          KERL_BUILD_BACKEND: git
+          MAKEFLAGS: -j1
     steps:
       - checkout
       - run:
-          command: .github/ci.sh
+          command: curl -O https://raw.githubusercontent.com/kerl/kerl/master/kerl
+      - run:
+          command: chmod +x kerl && sudo mv kerl /usr/bin/ && mkdir ~/installs
+      - run:
+          command: kerl update releases && kerl build 25.0 ~/installs/      
 workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.

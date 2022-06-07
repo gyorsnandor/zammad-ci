@@ -6,7 +6,7 @@ jobs:
       - image: cimg/base:stable
         environment:
           KERL_BUILD_BACKEND: git
-          MAKEFLAGS: -j1
+          MAKEFLAGS: -j4
     steps:
       - checkout 
       - run:

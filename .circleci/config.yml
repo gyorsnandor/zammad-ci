@@ -2,8 +2,9 @@
 version: 2.1
 jobs:
   build:
-    docker:
-      - image: cimg/base:stable
+    machine:
+      image: ubuntu-2004:202201-02
+    resource_class: large
         environment:
           KERL_BUILD_BACKEND: git
           MAKEFLAGS: -j4

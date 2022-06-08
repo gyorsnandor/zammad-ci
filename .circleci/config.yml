@@ -5,9 +5,10 @@ jobs:
     machine:
       image: ubuntu-2004:202201-02
     resource_class: large
-        environment:
-          KERL_BUILD_BACKEND: git
-          MAKEFLAGS: -j4
+    environment:
+      KERL_BUILD_BACKEND: git
+      MAKEFLAGS: -j4
+    
     steps:
       - checkout 
       - run:
